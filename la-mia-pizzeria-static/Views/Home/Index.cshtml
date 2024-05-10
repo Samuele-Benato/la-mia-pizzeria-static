@@ -1,8 +1,32 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
-}
+    Layout = null;
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+    Pizzeria mypizzeria = new Pizzeria("Pizzeria da Samu");
+}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@mypizzeria.Name</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" integrity="sha384-vk55RikL/DknF3u1qXkux4J50wVHJ1iWk5eZcJWB3w7nZ0FV20Z8/+r8tvGc1gxH" crossorigin="anonymous">
+</head>
+    <body>
+        <div class="ps-5">
+            <h1>@mypizzeria.Name</h1>
+            @{
+                foreach (var pizza in mypizzeria.pizzas)
+                {
+                    <div>
+                        <img src=@Url.Content(pizza.Image) />  <br />
+                        @pizza.Name <br />
+                        @pizza.Description <br />
+                        @pizza.Price $ <br />
+                    </div>
+
+                }
+            }
+        </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gaw9tpD8BKVqBjEeipmngY/SeAgz/4jtJ+osb1iBqkmq1BpNV6ZQvdP09M+erSz5" crossorigin="anonymous"></script>
+    </body>
+</html>
